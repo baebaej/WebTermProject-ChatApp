@@ -1,0 +1,528 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 95%;
+    width: 95%;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.appframe {
+    height: 95vh;
+    width: 95vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 55px;
+    box-sizing: border-box;
+    padding: 5px;
+
+}
+.logoframe{
+    width: 70%;
+    height: 100%;
+}
+.inu {
+    width: auto;
+    height: 50px;
+    margin-bottom:5px;
+}
+.userinfoframe {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; /* 요소를 우측에 정렬 */
+    width: 30%;
+    height: 100%;
+    align-items: center; /* 수직 중앙 정렬 */
+
+}
+.idbox{
+    display: flex;
+    flex-direction: row;
+    margin-right: 15px;
+    align-items: center; /* 수직 중앙 정렬 */
+
+}
+
+
+.headerbelowframe {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height:100%;
+
+}
+
+.menuframe {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    height: 100%;
+    width: fit-content;
+    background-color: #ffffff;
+    border-right: 1px outset lightgray;
+}
+
+.contentframe {
+    box-sizing: border-box;
+    width:100%;
+    height: 100%;
+}
+
+.chatappframe {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    width:100%;
+    height: 100%;
+}
+
+.selectroom {
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5f1f5;
+    overflow-y: auto;
+}
+
+.selectroom input {
+    width: 98%;
+    height: 30px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    margin-left: 1%;
+}
+
+.center {
+    width: 70%;
+    height: 100%;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+
+.chattitleframe {
+    box-sizing: border-box;
+    height: 15%;
+    width:100%;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    background-image:url('../img/roomtitle.png'); /* 이미지 경로를 여기에 입력하세요 */
+    background-size: cover; /* 이미지가 요소에 맞게 조정되도록 설정합니다. */
+    background-position: center; /* 이미지를 가운데 정렬합니다. */
+    color:white;
+
+}
+
+.messageframe {
+    box-sizing: border-box;
+    height: 85%;
+    width:100%;
+}
+
+.roomNotSelectedContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    background-color:aliceblue;
+}
+
+.roomNotSelected {
+    width: 100%;
+    height: 100%;
+}
+
+
+.roomtitle {
+    box-sizing: border-box;
+    width:80%;
+    height: 100%;
+    font-size:40px;
+    font-weight: bold;
+    margin-left: 30px;
+    display: grid;
+    align-items: center; /* 수직 중앙 정렬 */
+
+}
+.users {
+    box-sizing: border-box;
+    width: 20%;
+    height: 100%;
+    overflow-y: auto;
+}
+.users h3{
+    margin-bottom: 0;
+}
+
+.change_name_form {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+.change_name_form input {
+    width:30%;
+}
+.change_name_title{
+    box-sizing: border-box;
+    font-size:40px;
+    font-weight: bold;
+    
+    display: grid;
+    align-items: center; /* 수직 중앙 정렬 */
+    color:white;
+
+    height: 20%;
+    width: 100%;
+    background-image:url('../img/changename.png'); /* 이미지 경로를 여기에 입력하세요 */
+    background-size: cover; /* 이미지가 요소에 맞게 조정되도록 설정합니다. */
+    background-position: center; /* 이미지를 가운데 정렬합니다. */
+}
+.change_name_context{
+    box-sizing: border-box;
+
+    height: 80%;
+    width: 100%;
+
+    padding-left: 30px;
+    padding-top: 30px;
+    background-color: aliceblue;
+}
+
+.messages {
+    padding: 1em;
+    width: 100%;
+    overflow-y:auto;
+    text-align: left;
+    box-sizing: border-box;
+    height: 95%;
+    background-color: #9bbbd4;
+}
+
+.message_form {
+    box-sizing: border-box;
+    height: 5%;
+    width: 100%;
+    position: relative;
+    display: grid;
+
+}
+.message_form input{
+    box-sizing: border-box;
+    height: 100%; 
+    width: 100%;
+    border-radius: 15px;
+    border:1px solid black;
+    padding: 5px;
+}
+
+.emoticon_btn {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    position: absolute;
+    top: calc(50% - 360px);
+    right: calc(50% - 250px);
+    z-index: 1;
+}
+
+
+.login-screen {
+    border: 5px solid RGB(0, 48, 242);
+    border-radius: 30px;
+    width: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-screen input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.login-screen button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+
+
+
+/*메시지 박스*/
+.mymessage {
+    float: right;
+    clear: both;
+    min-width: 200px;
+
+    max-width: 50%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.messageidbox{
+    display: flex;
+    justify-content: right;
+    font-size: large;
+    font-weight: bold;
+    align-items: center;
+
+}
+
+.messageidbox img{
+    margin-right: 5px;
+}
+.messagebox{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end; /* 요소를 우측에 정렬 */
+
+}
+.messagetimebox{
+    font-size: x-small;
+    color: grey;
+    text-align: right;
+    width: 80px;
+    margin-right: 10px;
+    align-content: end;
+
+}
+.messagecontextbox{
+    font-size: large;
+    background-color: #F7E600;
+    height: 100%;
+    max-width: 70%;
+    border-radius: 20px;
+    padding: 10px;
+    align-content: center;
+    word-wrap: break-word;
+
+}
+
+.elsemessage {
+    text-align: left;
+    clear: both;
+    min-width: 200px;
+    max-width: 50%;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+.elsemessageidbox{
+    display: flex;
+    justify-content: left;
+    font-size: large;
+    font-weight: bold;
+    align-items: center;
+}
+.elsemessageidbox img{
+    margin-right: 5px;
+}
+.elsemessagebox{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start; /* 요소를 좌측에 정렬 */
+
+}
+.elsemessagetimebox{
+    font-size: x-small;
+    color: grey;
+    text-align: left;
+    width: 80px;
+    align-content: end;
+
+}
+.elsemessagecontextbox{
+    font-size: large;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    height: 100%;
+    max-width: 70%;
+    border-radius: 20px;
+    padding: 10px;
+    align-content: center;
+    word-wrap: break-word;
+    margin-right: 5px;
+}
+
+
+
+.menu-icon {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.menu-icon:hover {
+    transform: scale(1.05);
+}
+
+
+.roombox {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+    word-wrap: break-word;
+    background-color: white;
+
+
+}
+.roombox:hover {
+    transform: scale(1.05);
+}
+
+.roomname {
+    margin-left: 10px;
+}
+
+.overlay {
+    z-index: 5;
+}
+
+
+
+
+.emoji-picker-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: adds a semi-transparent background */
+  }
+  
+  .emoji-picker {
+    position: relative;
+    display: inline-block;
+    
+
+  }
+  
+  .emoji-picker-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 10px; /* Add some space between emojis */
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  .emoji-picker-title {
+    grid-column: span 5; /* Span the title across all columns */
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .emoji-picker-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: contents; /* Ensure <ul> does not affect the grid layout */
+  }
+  
+  .emoji-picker-dropdown li {
+    font-size: 2rem; /* Increase emoji size */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .emoji-picker-dropdown li:hover {
+    background-color: #f0f0f0;
+  }
+  
+
+
+
+  .user_list_form {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.user_list_title{
+    box-sizing: border-box;
+    font-size:40px;
+    font-weight: bold;
+    
+    display: grid;
+    align-items: center; /* 수직 중앙 정렬 */
+    color:white;
+
+    height: 20%;
+    width: 100%;
+    background-image:url('../img/userslisttitle.png'); /* 이미지 경로를 여기에 입력하세요 */
+    background-size: cover; /* 이미지가 요소에 맞게 조정되도록 설정합니다. */
+    background-position: center; /* 이미지를 가운데 정렬합니다. */
+}
+.user_list_context{
+    box-sizing: border-box;
+
+    height: 80%;
+    width: 100%;
+
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: x-large;
+    overflow-y: auto;
+    background-color: aliceblue;
+}
