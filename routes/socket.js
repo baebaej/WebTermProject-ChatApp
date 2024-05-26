@@ -78,7 +78,7 @@ module.exports = function (socket) {
     id.messages.push(data); //해당 방의 메시지에 push 해주고
     //console.log(id.messages);
     socket.broadcast.emit('send:message', { //다른 유저들에게 broadcast해준다
-      user: name,
+      user: data.user,
       text: data.text,
       time: data.time
     });
