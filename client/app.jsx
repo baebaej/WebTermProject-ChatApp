@@ -192,7 +192,8 @@ var EmoticonList = React.createClass({
 			var minutes = ('0' + today.getMinutes()).slice(-2);
 			var seconds = ('0' + today.getSeconds()).slice(-2);
 
-			var formattedTime = year + '년' + month  + '월' + day + '일 ' + hours + ':' + minutes  + ':' + seconds;
+			var formattedTime = year + '년' + month  + '월' + day + '일 ' + 
+			hours + ':' + minutes  + ':' + seconds;
 			var message = {
 				user : this.props.user,
 				text : this.state.text,
@@ -222,7 +223,9 @@ var EmoticonList = React.createClass({
 							value={this.state.text}
 							style={{ paddingRight: '40px' }}
 						/>
-						<img className ='emoticon_btn' src ='img/emoticon.png' onClick={this.props.onEmoticonBtnClick}/>
+						<img className ='emoticon_btn' 
+						src ='img/emoticon.png' 
+						onClick={this.props.onEmoticonBtnClick}/>
 					</form>
 				</div>
 			);
@@ -727,7 +730,7 @@ var ChatApp = React.createClass({
 		var {messages} = this.state;
 		messages.push(message);
 		this.setState({messages});
-		socket.emit('send:message', message, this.state.roomid);
+		socket.emit('send:message', message, this.state.roomid, this.state.user);
 	},
 
 
