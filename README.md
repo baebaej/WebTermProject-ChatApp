@@ -2,7 +2,8 @@
 
 #### Dweb ❌ Incheon National University (INU)
 
-## 🌟 Base code for the term project in Web class
+## 🌟 the term project in Web class
+## 🌟 202001518 배현준
 
 ⚠️ Copyright © 2024. _Dweb_ All Rights Reserved.
 
