@@ -730,7 +730,7 @@ var ChatApp = React.createClass({
 		var {messages} = this.state;
 		messages.push(message);
 		this.setState({messages});
-		socket.emit('send:message', message, this.state.roomid, this.state.user);
+		socket.emit('send:message', message, this.state.roomid);
 	},
 
 
