@@ -7,7 +7,7 @@
 ## 2. npm run build
 ## 3. npm start
 ## 4. 웹 브라우저에서 localhost:3000 접속
-
+<br>
 ## 🌟 실행 화면
 <img src = "./images/loginScreen.png" width=40%>
 <img src = "./images/mainScreen.png" width=40%>
