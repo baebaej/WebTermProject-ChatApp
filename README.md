@@ -2,8 +2,10 @@
 
 #### Dweb ❌ Incheon National University (INU)
 
-## 🌟 Base code for the term project in Web class
-
-⚠️ Copyright © 2024. _Dweb_ All Rights Reserved.
+## 🌟 다음과 같은 순서로 실행할 수 있습니다.
+## 🌟 npm install
+## 🌟 npm run build
+## 🌟 npm start
+## 🌟 웹 브라우저에서 localhost:3000 접속
 
 <p align="right"><img src = "./images/Dweb.png" width=40%></p>
