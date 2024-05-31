@@ -211,7 +211,7 @@ var EmoticonList = React.createClass({
 					),
 					React.createElement(
 						'button',
-						{ onClick: function () {
+						{ className: 'btn', onClick: function () {
 								return _this2.props.onEmoticionBtnClicked();
 							} },
 						'닫기'
@@ -274,7 +274,9 @@ var MessageForm = React.createClass({
 					value: this.state.text,
 					style: { paddingRight: '40px' }
 				}),
-				React.createElement('img', { className: 'emoticon_btn', src: 'img/emoticon.png', onClick: this.props.onEmoticonBtnClick })
+				React.createElement('img', { className: 'emoticon_btn',
+					src: 'img/emoticon.png',
+					onClick: this.props.onEmoticonBtnClick })
 			)
 		);
 	}
@@ -292,10 +294,14 @@ var ChangeNameForm = React.createClass({
 	},
 
 	handleSubmit: function handleSubmit(e) {
+		var _this3 = this;
+
 		e.preventDefault();
 		var newName = this.state.newName;
-		this.props.onChangeName(newName);
-
+		if (newName == '') {
+			alert('변경할 아이디를 입력해주세요!');
+			return;
+		}
 		var currentname = this.props.currentname;
 
 		// Send update request to server
@@ -310,6 +316,7 @@ var ChangeNameForm = React.createClass({
 		}).then(function (data) {
 			if (data.success) {
 				alert(data.message);
+				_this3.props.onChangeName(newName);
 			} else {
 				alert(data.message);
 			}
@@ -347,6 +354,7 @@ var ChangeNameForm = React.createClass({
 					'form',
 					{ onSubmit: this.handleSubmit },
 					React.createElement('input', {
+						className: 'inputbox',
 						placeholder: '변경할 아이디 입력 후 엔터',
 						onChange: this.onKey,
 						value: this.state.newName,
@@ -366,7 +374,7 @@ var UsersScreen = React.createClass({
 	},
 
 	componentDidMount: function componentDidMount() {
-		var _this3 = this;
+		var _this4 = this;
 
 		fetch('/api/get', {
 			method: 'POST',
@@ -377,7 +385,7 @@ var UsersScreen = React.createClass({
 		}).then(function (response) {
 			return response.json();
 		}).then(function (data) {
-			_this3.setState({ userlist: data.userlist });
+			_this4.setState({ userlist: data.userlist });
 		});
 	},
 
@@ -436,7 +444,7 @@ var LoginScreen = React.createClass({
 	},
 
 	handleLogin: function handleLogin() {
-		var _this4 = this;
+		var _this5 = this;
 
 		var _state = this.state;
 		var username = _state.username;
@@ -454,7 +462,7 @@ var LoginScreen = React.createClass({
 		}).then(function (data) {
 			if (data.success) {
 				// Login successful, proceed to chat room
-				_this4.props.onEnterChat(username);
+				_this5.props.onEnterChat(username);
 			} else {
 				// Login failed, show error message
 				alert('로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.');
@@ -466,11 +474,16 @@ var LoginScreen = React.createClass({
 	},
 
 	handleRegister: function handleRegister() {
-		var _this5 = this;
+		var _this6 = this;
 
 		var _state2 = this.state;
 		var username = _state2.username;
 		var password = _state2.password;
+
+		if (username == '' || password == '') {
+			alert('아이디와 비밀번호를 모두 입력해주세요!');
+			return;
+		}
 
 		// Send registration request to server
 		fetch('/api/register', {
@@ -484,9 +497,9 @@ var LoginScreen = React.createClass({
 		}).then(function (data) {
 			if (data.success) {
 				// Registration successful, show success message
-				_this5.props.handleSetUsers(data.userlist);
-				alert('회원가입이 완료되었습니다. 이제 로그인하세요.');
-				_this5.setState({ isRegistering: false, currfunction: '로그인' });
+				_this6.props.handleSetUsers(data.userlist);
+				alert('회원가입 성공!\n로그인 버튼을 눌러 로그인하세요.');
+				_this6.setState({ isRegistering: false, currfunction: '로그인' });
 			} else {
 				// Registration failed, show error message
 				alert('회원가입 실패: 이미 사용 중인 아이디입니다.');
@@ -514,7 +527,7 @@ var LoginScreen = React.createClass({
 				null,
 				React.createElement('img', { className: 'inu', src: 'img/INU.png', alt: 'INU' })
 			),
-			React.createElement('img', { className: 'logo', src: 'img/횃불이.png', width: '250', height: '200', alt: '횃불이' }),
+			React.createElement('img', { className: 'logo', src: 'img/횃불이.png', width: '200px', height: 'auto', alt: '횃불이' }),
 			React.createElement(
 				'div',
 				{ className: 'login-screen' },
@@ -527,6 +540,8 @@ var LoginScreen = React.createClass({
 					'div',
 					null,
 					React.createElement('input', {
+						className: 'inputbox',
+						style: { width: '350px' },
 						type: 'text',
 						placeholder: '아이디',
 						value: this.state.username,
@@ -537,25 +552,29 @@ var LoginScreen = React.createClass({
 					'div',
 					null,
 					React.createElement('input', {
+						className: 'inputbox',
+						style: { width: '350px' },
 						type: 'password',
 						placeholder: '비밀번호',
 						value: this.state.password,
 						onChange: this.handlePasswordChange
 					})
 				),
+				React.createElement('br', null),
 				this.state.isRegistering ? React.createElement(
 					'button',
-					{ onClick: this.handleRegister },
+					{ className: 'btn', style: { width: '350px' }, onClick: this.handleRegister },
 					'회원가입'
 				) : React.createElement(
 					'button',
-					{ onClick: this.handleLogin },
+					{ className: 'btn', style: { width: '350px' }, onClick: this.handleLogin },
 					'로그인'
 				),
+				React.createElement('br', null),
 				React.createElement(
 					'button',
-					{ onClick: this.handleFunction },
-					this.state.isRegistering ? '로그인 화면으로 돌아가기' : '회원가입'
+					{ className: 'btn', style: { width: '350px' }, onClick: this.handleFunction },
+					this.state.isRegistering ? '로그인 화면으로' : '회원가입'
 				)
 			)
 		);
@@ -615,7 +634,7 @@ var SelectRoom = React.createClass({
 	},
 
 	render: function render() {
-		var _this6 = this;
+		var _this7 = this;
 
 		var _state3 = this.state;
 		var searchTerm = _state3.searchTerm;
@@ -627,13 +646,14 @@ var SelectRoom = React.createClass({
 
 		return React.createElement(
 			'div',
-			null,
+			{ className: 'selectroom' },
 			React.createElement(
 				'h2',
 				{ style: { textAlign: 'center' } },
 				'채팅방 목록'
 			),
 			React.createElement('input', {
+				className: 'inputbox',
 				type: 'text',
 				placeholder: '검색할 채팅방 이름을 입력하세요.',
 				value: searchTerm,
@@ -643,7 +663,7 @@ var SelectRoom = React.createClass({
 				return React.createElement(
 					'p',
 					{ className: 'roombox', key: room.id, onClick: function () {
-							return _this6.handleRoomClick(room.id);
+							return _this7.handleRoomClick(room.id);
 						} },
 					React.createElement('img', { src: 'img/home.png', width: '50', height: '50' }),
 					React.createElement(
@@ -686,8 +706,8 @@ var SelectRoom = React.createClass({
 				),
 				React.createElement(
 					'button',
-					{ style: { textAlign: 'center' }, onClick: function () {
-							return _this6.handleNewRoom(_this6.state.searchTerm);
+					{ className: 'btn', style: { textAlign: 'center', width: '150px', height: '50px' }, onClick: function () {
+							return _this7.handleNewRoom(_this7.state.searchTerm);
 						} },
 					'방 개설하기'
 				)
@@ -732,18 +752,18 @@ var AppFrame = React.createClass({
 	},
 
 	handleChangeName: function handleChangeName(newName) {
-		var _this7 = this;
+		var _this8 = this;
 
 		var oldName = this.state.user;
 		socket.emit('change:name', { name: newName }, function (result) {
 			if (!result) {
 				return alert('There was an error changing your name');
 			}
-			var users = _this7.state.users;
+			var users = _this8.state.users;
 
 			var index = users.indexOf(oldName);
 			users.splice(index, 1, newName);
-			_this7.setState({ users: users, user: newName });
+			_this8.setState({ users: users, user: newName });
 		});
 	},
 
@@ -798,7 +818,7 @@ var AppFrame = React.createClass({
 						),
 						React.createElement(
 							'button',
-							{ style: { height: '40px', width: '100px' }, onClick: this.handleLogout },
+							{ className: 'btn', style: { textAlign: 'center', width: '100px', height: '40px' }, onClick: this.handleLogout },
 							'로그아웃'
 						)
 					)
@@ -806,11 +826,7 @@ var AppFrame = React.createClass({
 				React.createElement(
 					'div',
 					{ className: 'headerbelowframe' },
-					React.createElement(
-						'div',
-						{ className: 'menuframe' },
-						React.createElement(MenuFrame, { onMenuChange: this.handleMenuChange })
-					),
+					React.createElement(MenuFrame, { onMenuChange: this.handleMenuChange }),
 					React.createElement(
 						'div',
 						{ className: 'contentframe' },
@@ -930,11 +946,7 @@ var ChatApp = React.createClass({
 		return React.createElement(
 			'div',
 			{ className: 'chatappframe' },
-			React.createElement(
-				'div',
-				{ className: 'selectroom' },
-				React.createElement(SelectRoom, { user: this.state.user })
-			),
+			React.createElement(SelectRoom, { user: this.state.user }),
 			this.state.roomid.length === 0 ? //방이 선택되지 않은 경우
 			React.createElement(
 				'div',

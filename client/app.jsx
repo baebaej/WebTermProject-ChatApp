@@ -162,7 +162,7 @@ var EmoticonList = React.createClass({
 					  })
 					}
 				  </ul>
-				  <button onClick = {() => this.props.onEmoticionBtnClicked()}>닫기</button>
+				  <button className='btn' onClick = {() => this.props.onEmoticionBtnClicked()}>닫기</button>
 				</div>
 			  </div>
 			</div>
@@ -244,8 +244,10 @@ var ChangeNameForm = React.createClass({
 	handleSubmit(e) {
 		e.preventDefault();
 		var newName = this.state.newName;
-		this.props.onChangeName(newName);	
-
+		if(newName == ''){
+			alert('변경할 아이디를 입력해주세요!');
+			return;
+		}
 		var currentname = this.props.currentname;
 
         // Send update request to server
@@ -260,6 +262,7 @@ var ChangeNameForm = React.createClass({
         .then(data => {
             if (data.success) {
                 alert(data.message);
+				this.props.onChangeName(newName);	
             } else {
                 alert(data.message);
             }
@@ -283,6 +286,7 @@ var ChangeNameForm = React.createClass({
 					<p>현재 아이디 : {this.props.currentname}</p>
 					<form onSubmit={this.handleSubmit}>
 						<input
+							className='inputbox'
 							placeholder='변경할 아이디 입력 후 엔터'
 							onChange={this.onKey}
 							value={this.state.newName} 
@@ -391,6 +395,10 @@ var LoginScreen = React.createClass({
 
     handleRegister() {
         const { username, password } = this.state;
+		if(username=='' || password==''){
+			alert('아이디와 비밀번호를 모두 입력해주세요!');
+			return;
+		}
 
         // Send registration request to server
         fetch('/api/register', {
@@ -405,7 +413,7 @@ var LoginScreen = React.createClass({
             if (data.success) {
                 // Registration successful, show success message
 				this.props.handleSetUsers(data.userlist);
-                alert('회원가입이 완료되었습니다. 이제 로그인하세요.');
+                alert('회원가입 성공!\n로그인 버튼을 눌러 로그인하세요.');
 				this.setState({isRegistering:false, currfunction:'로그인'})
             } else {
                 // Registration failed, show error message
@@ -433,11 +441,13 @@ var LoginScreen = React.createClass({
 				<div>
 					<img className='inu' src="img/INU.png" alt="INU" />
 				</div>
-				<img className="logo" src="img/횃불이.png" width="250" height="200" alt="횃불이" />
+				<img className="logo" src="img/횃불이.png" width="200px" height="auto" alt="횃불이" />
 				<div className="login-screen">
 					<h2>{this.state.currfunction}</h2>
 					<div>
 						<input
+							className='inputbox'
+							style={{width:'350px'}}
 							type="text"
 							placeholder="아이디"
 							value={this.state.username}
@@ -446,19 +456,23 @@ var LoginScreen = React.createClass({
 					</div>
 					<div>
 						<input
+							className='inputbox'
+							style={{width:'350px'}}
 							type="password"
 							placeholder="비밀번호"
 							value={this.state.password}
 							onChange={this.handlePasswordChange}
 						/>
 					</div>
+					<br></br>
 					{this.state.isRegistering ? (
-						<button onClick={this.handleRegister}>회원가입</button>
+						<button className='btn' style={{width:'350px'}} onClick={this.handleRegister}>회원가입</button>
 					) : (
-						<button onClick={this.handleLogin}>로그인</button>
+						<button className='btn' style={{width:'350px'}} onClick={this.handleLogin}>로그인</button>
 					)}
-					<button onClick={this.handleFunction}>
-						{this.state.isRegistering ? '로그인 화면으로 돌아가기' : '회원가입'}
+					<br/>
+					<button className='btn' style={{width:'350px'}} onClick={this.handleFunction}>
+						{this.state.isRegistering ? '로그인 화면으로' : '회원가입'}
 					</button>
 				</div>
 			</div>
@@ -523,9 +537,10 @@ var SelectRoom = React.createClass({
 	  //console.log(roomsToDisplay.length);
 
 	  return (
-		<div>
+		<div className='selectroom'>
 		  <h2 style={{textAlign:'center'}}>채팅방 목록</h2>
 		  <input
+		  	className='inputbox'
 			type="text"
 			placeholder="검색할 채팅방 이름을 입력하세요."
 			value={searchTerm}
@@ -552,7 +567,7 @@ var SelectRoom = React.createClass({
 			  </p>
 			))}
 		  {!roomsToDisplay.length && (<p style={{textAlign:'center'}}>채팅방이 없습니다.<br/> 채팅방을 개설하시겠습니까?<br><br></br></br>
-			  <button style={{textAlign:'center'}} onClick={() => this.handleNewRoom(this.state.searchTerm)}>방 개설하기</button></p>)}
+			  <button className='btn' style={{textAlign:'center', width:'150px', height:'50px'}} onClick={() => this.handleNewRoom(this.state.searchTerm)}>방 개설하기</button></p>)}
 		  {selectedRoom && (
 			<p style={{textAlign:'center'}}>현재 선택된 방: {this.state.rooms.find(room => room.id === selectedRoom).name}</p>
 		  )}
@@ -636,13 +651,11 @@ var SelectRoom = React.createClass({
 						<img style={{height:'50px', width:'50px'}} src="img/user.png" alt="사용자" />
 						<p>아이디 : {this.state.user}</p>
 					</div>
-					<button style={{height:'40px', width:'100px'}} onClick={this.handleLogout}>로그아웃</button>
+					<button className='btn' style={{textAlign:'center', width:'100px', height:'40px'}} onClick={this.handleLogout}>로그아웃</button>
 				</div>
 			  </div>
 			  <div className='headerbelowframe'>
-					<div className="menuframe">
 						<MenuFrame onMenuChange={this.handleMenuChange} />
-					</div>
 					<div className="contentframe">
 						{this.renderContent()}
 					</div>
@@ -760,9 +773,7 @@ var ChatApp = React.createClass({
 		//console.log("roomid:", this.state.roomid);
 			return(
 				<div className='chatappframe'>
-					<div className='selectroom'>
 						<SelectRoom user={this.state.user}/>
-					</div>
 					
 					{
 					// Conditional Rendering 
