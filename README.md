@@ -9,7 +9,7 @@
 ## 4. 웹 브라우저에서 localhost:3000 접속
 ##
 ## 🌟 실행 화면
-<img src = "./images/loginScreen.png" width=50%>
+<img src = "./images/loginScreen.png" width=100%>
 <img src = "./images/mainScreen.png" width=50%>
 <img src = "./images/chattingRoom.png" width=50%>
 <img src = "./images/selectEmoticon.png" width=50%>
