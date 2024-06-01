@@ -9,11 +9,11 @@
 ## 4. 웹 브라우저에서 localhost:3000 접속
 ##
 ## 🌟 실행 화면
-<img src = "./images/loginScreen.png" width=100%>
-<img src = "./images/mainScreen.png" width=50%>
-<img src = "./images/chattingRoom.png" width=50%>
-<img src = "./images/selectEmoticon.png" width=50%>
-<img src = "./images/userlist.png" width=50%>
-<img src = "./images/changeNameForm.png" width=50%>
+<img src = "./images/loginScreen.png" width=70%>
+<img src = "./images/mainScreen.png" width=70%>
+<img src = "./images/chattingRoom.png" width=70%>
+<img src = "./images/selectEmoticon.png" width=70%>
+<img src = "./images/userlist.png" width=70%>
+<img src = "./images/changeNameForm.png" width=70%>
 
 <p align="right"><img src = "./images/Dweb.png" width=40%></p>
