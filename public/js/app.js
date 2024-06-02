@@ -913,10 +913,12 @@ var ChatApp = React.createClass({
 
 	_messageRecieve: function _messageRecieve(message) {
 		//console.log("받은 메시지", message);
-		var messages = this.state.messages;
+		if (message.roomid == this.state.roomid) {
+			var messages = this.state.messages;
 
-		messages.push(message);
-		this.setState({ messages: messages });
+			messages.push(message);
+			this.setState({ messages: messages });
+		}
 	},
 
 	handleMessageSubmit: function handleMessageSubmit(message) {

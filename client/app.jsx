@@ -733,9 +733,11 @@ var ChatApp = React.createClass({
 
 	_messageRecieve(message) {
 		//console.log("받은 메시지", message);
-		var {messages} = this.state;
-		messages.push(message);
-		this.setState({messages});
+		if(message.roomid == this.state.roomid){
+			var {messages} = this.state;
+			messages.push(message);
+			this.setState({messages});
+		}
 	},
 
 	handleMessageSubmit(message) {
