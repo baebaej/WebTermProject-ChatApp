@@ -1,6 +1,14 @@
 <p align="left"><img src = "./images/INU.png"  width=40%></p>
 
 #### Dweb ❌ Incheon National University (INU)
+2024-1학기 웹프로그래밍 강의 프로젝트 과제입니다.<br/>
+React와 Socket를 활용하여 채팅 기능을 구현하였습니다.<br/>
+지원하는 기능은 다음과 같습니다.<br/>
+- 회원가입 및 로그인
+- 채팅방 검색 및 개설
+- 채팅방 참여 및 채팅 전송
+- 이모티콘 기능
+- 닉네임 변경 기능
 
 ## 🌟 다음과 같은 순서로 실행할 수 있습니다.
 ## 1. npm install
